@@ -1,0 +1,23 @@
+package rules
+ 
+import com.acc.drool.model.Product;
+import java.lang.Exception;
+
+rule "Diamond"
+	when 
+		productObject: Product(type=="diamond")
+	then
+		productObject.setDiscount(15);
+	end
+rule "Gold"
+	when 
+		productObject: Product(type=="gold")
+	then
+		productObject.setDiscount(25);
+	end
+rule "Exception"
+	when 
+		productObject: Product(type=="")
+	then
+		throw new Exception("Please provide product type");
+	end	
